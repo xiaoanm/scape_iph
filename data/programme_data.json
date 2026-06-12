@@ -1,0 +1,792 @@
+{
+  "export_date": "2026-06-10",
+  "year_begin": 2026,
+  "year_end": 2027,
+  "school": "scape",
+  "school_display_name": "School of Chemical and Process Engineering",
+  "staff_titles": {
+    "Xiaoan Mao": "Dr",
+    "Sheng Dai": "Prof",
+    "Manoj Ravi": "Dr"
+  },
+  "programmes": [
+    {
+      "prog_id": 4101,
+      "programme_title": "BEng Chemical Engineering",
+      "programme_short_title": "ChemEngB",
+      "category": "Chemical Engineering Programmes (Undergraduate)",
+      "programme_description": "PLACEHOLDER: Replace with the official programme description.",
+      "default_target_credits": 120,
+      "levels": [
+        {
+          "level": 1,
+          "year_label": "Year 1",
+          "target_credits": 120,
+          "modules": []
+        },
+        {
+          "level": 2,
+          "year_label": "Year 2",
+          "target_credits": 120,
+          "modules": []
+        },
+        {
+          "level": 3,
+          "year_label": "Year 3",
+          "target_credits": 120,
+          "modules": []
+        }
+      ],
+      "spec": {
+        "code": "BEN-CEM/EN",
+        "ucas": "H805",
+        "duration": "3 Years",
+        "attendance": "Full Time",
+        "total_credits": "360",
+        "manager": "Manoj Ravi",
+        "email": "m.ravi@leeds.ac.uk"
+      }
+    },
+    {
+      "prog_id": 4102,
+      "programme_title": "BEng Chemical Engineering (Industrial)",
+      "programme_short_title": "",
+      "category": "Chemical Engineering Programmes (Undergraduate)",
+      "programme_description": "",
+      "default_target_credits": 120,
+      "levels": [
+        {
+          "level": 1,
+          "year_label": "Year 1",
+          "target_credits": 120,
+          "modules": [
+            {
+              "module_code": "CAPE1100",
+              "module_title": "Professional Engineering Skills",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 1,
+              "compulsory": true,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE1150",
+              "module_title": "Engineering Mathematics",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 10,
+              "semester": 2,
+              "compulsory": true,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE1320",
+              "module_title": "Thermodynamics and Transport Phenomena Fundamentals",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 2,
+              "compulsory": true,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE1340",
+              "module_title": "Process Engineering Fundamentals",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 3,
+              "compulsory": true,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE1350",
+              "module_title": "Mass and Energy Balances",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 3,
+              "compulsory": true,
+              "pass_for_progression": true,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE1720",
+              "module_title": "Materials Science and Engineering",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 3,
+              "compulsory": true,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE1050",
+              "module_title": "Foundation Mathematics",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 10,
+              "semester": 1,
+              "compulsory": false,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE1080",
+              "module_title": "Foundation Chemistry",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 10,
+              "semester": 1,
+              "compulsory": false,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE1090",
+              "module_title": "Foundation Physics",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 10,
+              "semester": 1,
+              "compulsory": false,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "year_label": "Year 2",
+          "target_credits": 120,
+          "modules": [
+            {
+              "module_code": "CAPE2100",
+              "module_title": "Advanced Engineering Mathematics and Numerical Methods",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 3,
+              "compulsory": true,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE2310",
+              "module_title": "Process Safety and Environmental Engineering",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 1,
+              "compulsory": true,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE2320",
+              "module_title": "Applied Thermodynamics and Transport Phenomena",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 3,
+              "compulsory": true,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE2330",
+              "module_title": "Chemical Engineering Practice and Process Simulation",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 3,
+              "compulsory": true,
+              "pass_for_progression": true,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE2340",
+              "module_title": "Separation Process Principles",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 3,
+              "compulsory": true,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE2350",
+              "module_title": "Chemical Reaction Engineering",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 2,
+              "compulsory": true,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "year_label": "Year 3",
+          "target_credits": 120,
+          "modules": [
+            {
+              "module_code": "FOEN8001",
+              "module_title": "Industrial Placement Year",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 120,
+              "semester": 3,
+              "compulsory": true,
+              "pass_for_progression": true,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "year_label": "Year 4",
+          "target_credits": 120,
+          "modules": [
+            {
+              "module_code": "CAPE3321",
+              "module_title": "Process Optimisation and Control",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 3,
+              "compulsory": true,
+              "pass_for_progression": true,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE3330",
+              "module_title": "Engineering Management and Discovery Labs",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 3,
+              "compulsory": true,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE3340",
+              "module_title": "Multi-phase Separations and Solids Processing",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 3,
+              "compulsory": true,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE3350",
+              "module_title": "Process Plant Design Project",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 40,
+              "semester": 3,
+              "compulsory": true,
+              "pass_for_progression": true,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE3310",
+              "module_title": "Sustainability in Process Engineering (LIST A)",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 3,
+              "compulsory": false,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE3410",
+              "module_title": "Sustainable Energy Engineering (LIST A)",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 3,
+              "compulsory": false,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE3710",
+              "module_title": "Synthesis and Characterisation of Materials (LIST A)",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 3,
+              "compulsory": false,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            },
+            {
+              "module_code": "CAPE3331",
+              "module_title": "Nuclear Operations (LIST A)",
+              "module_leader": "",
+              "module_description": "",
+              "credits": 20,
+              "semester": 3,
+              "compulsory": false,
+              "pass_for_progression": false,
+              "notes": "",
+              "other_school": "",
+              "assessments": []
+            }
+          ],
+          "option_groups": [
+            {
+              "id": "A",
+              "name": "List A Optional Modules",
+              "codes": [
+                "CAPE3310",
+                "CAPE3410",
+                "CAPE3710",
+                "CAPE3331"
+              ],
+              "description": "You must select 1 module from this list.",
+              "min": 1,
+              "max": 1
+            }
+          ]
+        }
+      ],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "480",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 4103,
+      "programme_title": "BEng Chemical Engineering (International)",
+      "programme_short_title": "",
+      "category": "Chemical Engineering Programmes (Undergraduate)",
+      "programme_description": "",
+      "default_target_credits": 120,
+      "levels": [],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "480",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 4201,
+      "programme_title": "MEng, BEng Chemical Engineering",
+      "programme_short_title": "ChemEngMB",
+      "category": "Chemical Engineering Programmes (Undergraduate)",
+      "programme_description": "PLACEHOLDER: Replace with the official programme description.",
+      "default_target_credits": 120,
+      "levels": [],
+      "spec": {
+        "code": "MEBE-CEM/EN",
+        "ucas": "H800",
+        "duration": "4 Years",
+        "attendance": "Full Time",
+        "total_credits": "480",
+        "manager": "Manoj Ravi",
+        "email": "m.ravi@leeds.ac.uk"
+      }
+    },
+    {
+      "prog_id": 4202,
+      "programme_title": "MEng, BEng Chemical Engineering (Industrial) Year 3 Placement",
+      "programme_short_title": "",
+      "category": "Chemical Engineering Programmes (Undergraduate)",
+      "programme_description": "",
+      "default_target_credits": 120,
+      "levels": [],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 4203,
+      "programme_title": "MEng, BEng Chemical Engineering (Industrial) Year 4 Placement",
+      "programme_short_title": "",
+      "category": "Chemical Engineering Programmes (Undergraduate)",
+      "programme_description": "",
+      "default_target_credits": 120,
+      "levels": [],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 4204,
+      "programme_title": "MEng, BEng Chemical Engineering (International) Year 3 Abroad",
+      "programme_short_title": "",
+      "category": "Chemical Engineering Programmes (Undergraduate)",
+      "programme_description": "",
+      "default_target_credits": 120,
+      "levels": [],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 4205,
+      "programme_title": "MEng, BEng Chemical Engineering (International) Year 4 Abroad",
+      "programme_short_title": "",
+      "category": "Chemical Engineering Programmes (Undergraduate)",
+      "programme_description": "",
+      "default_target_credits": 120,
+      "levels": [],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 4301,
+      "programme_title": "BEng Materials Science and Engineering",
+      "programme_short_title": "",
+      "category": "Materials Science and Engineering Programmes (Undergraduate)",
+      "programme_description": "",
+      "default_target_credits": 120,
+      "levels": [],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 4302,
+      "programme_title": "BEng Materials Science and Engineering (Industrial)",
+      "programme_short_title": "",
+      "category": "Materials Science and Engineering Programmes (Undergraduate)",
+      "programme_description": "",
+      "default_target_credits": 120,
+      "levels": [],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 4303,
+      "programme_title": "BEng Materials Science and Engineering (International)",
+      "programme_short_title": "",
+      "category": "Materials Science and Engineering Programmes (Undergraduate)",
+      "programme_description": "",
+      "default_target_credits": 120,
+      "levels": [],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 4401,
+      "programme_title": "MEng, BEng Materials Science and Engineering",
+      "programme_short_title": "",
+      "category": "Materials Science and Engineering Programmes (Undergraduate)",
+      "programme_description": "",
+      "default_target_credits": 120,
+      "levels": [],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 4402,
+      "programme_title": "MEng, BEng Materials Science and Engineering (Industrial) Year 3 Placement",
+      "programme_short_title": "",
+      "category": "Materials Science and Engineering Programmes (Undergraduate)",
+      "programme_description": "",
+      "default_target_credits": 120,
+      "levels": [],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 4403,
+      "programme_title": "MEng, BEng Materials Science and Engineering (Industrial) Year 4 Placement",
+      "programme_short_title": "",
+      "category": "Materials Science and Engineering Programmes (Undergraduate)",
+      "programme_description": "",
+      "default_target_credits": 120,
+      "levels": [],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 4404,
+      "programme_title": "MEng, BEng Materials Science and Engineering (International) Year 3 Abroad",
+      "programme_short_title": "",
+      "category": "Materials Science and Engineering Programmes (Undergraduate)",
+      "programme_description": "",
+      "default_target_credits": 120,
+      "levels": [],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 4405,
+      "programme_title": "MEng, BEng Materials Science and Engineering (International) Year 4 Abroad",
+      "programme_short_title": "",
+      "category": "Materials Science and Engineering Programmes (Undergraduate)",
+      "programme_description": "",
+      "default_target_credits": 120,
+      "levels": [],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 4501,
+      "programme_title": "BEng Materials Science and Engineering Southwest Jiaotong - Leeds Joint School",
+      "programme_short_title": "",
+      "category": "Materials Science and Engineering Programmes (Undergraduate)",
+      "programme_description": "",
+      "default_target_credits": 120,
+      "levels": [],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 4601,
+      "programme_title": "BEng Chemical Technoloigies Southwest Jiaotong - Leeds Joint School",
+      "programme_short_title": "",
+      "category": "Chemical Technologies Programmes (Undergraduate)",
+      "programme_description": "",
+      "default_target_credits": 120,
+      "levels": [],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 7001,
+      "programme_title": "MSc Advanced Chemical Engineering",
+      "programme_short_title": "MSc ACE",
+      "category": "MSc Programmes (Postgraduate)",
+      "programme_description": "PLACEHOLDER: Replace with the official programme description.",
+      "default_target_credits": 180,
+      "levels": [
+        {
+          "level": 1,
+          "year_label": "Year 1",
+          "target_credits": 180,
+          "modules": []
+        }
+      ],
+      "spec": {
+        "code": "MSC-CEM/ACE",
+        "ucas": "N/A",
+        "duration": "12 Months",
+        "attendance": "Full Time",
+        "total_credits": "180",
+        "manager": "Tariq Mahmud",
+        "email": "t.mahmud@leeds.ac.uk"
+      }
+    },
+    {
+      "prog_id": 7002,
+      "programme_title": "MSc Energy and Environmental Engineering",
+      "programme_short_title": "MSc EEE",
+      "category": "MSc Programmes (Postgraduate)",
+      "programme_description": "PLACEHOLDER: Replace with the official programme description.",
+      "default_target_credits": 180,
+      "levels": [
+        {
+          "level": 1,
+          "year_label": "Year 1",
+          "target_credits": 180,
+          "modules": []
+        }
+      ],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "",
+        "manager": "",
+        "email": ""
+      }
+    },
+    {
+      "prog_id": 7003,
+      "programme_title": "MSc Materials Science and Engineering",
+      "programme_short_title": "MSc MST",
+      "category": "MSc Programmes (Postgraduate)",
+      "programme_description": "PLACEHOLDER: Replace with the official programme description.",
+      "default_target_credits": 180,
+      "levels": [
+        {
+          "level": 1,
+          "year_label": "Year 1",
+          "target_credits": 180,
+          "modules": []
+        }
+      ],
+      "spec": {
+        "code": "",
+        "ucas": "",
+        "duration": "",
+        "attendance": "Full Time",
+        "total_credits": "",
+        "manager": "",
+        "email": ""
+      }
+    }
+  ],
+  "external_link": {
+    "label": "View Assessment Details",
+    "url": "https://eps-apps.leeds.ac.uk/kai/staff/cwt/index.php"
+  }
+}
