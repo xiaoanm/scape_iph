@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPH — School of Chemical and Process Engineering</title>
+    <style>
+        :root {
+            --primary: #1C1C1C; /* Dark Charcoal for Header & Sidebar */
+            --secondary: #A5181E; /* Leeds Red */
+            --bg-light: #f4f6f8;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --border: #dddddd;
+            --card-bg: #ffffff;
+            --success: #2e7d32;
+            --warning: #ef6c00;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+            padding-top: 190px; /* Offset expanded to accommodate Global Search header banner layout wrapper zone */
+        }
+
+        /* Top Branded Head Bar & Global Search Component Wrapper Zone */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .top-header-main {
+            background-color: var(--primary);
+            height: 70px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 3rem;
+        }
+
+        .top-header-logo {
+            max-height: 45px;
+            width: auto;
+            /* Inverts the black logo to white */
+            filter: invert(1) brightness(2); 
+        }
+
+        .top-header-sub {
+            background-color: var(--secondary);
+            height: 40px;
+            display: flex;
+            align-items: center;
+            padding: 0 3rem;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* Branded Cross-Programme Global Search Engine Layout Control Bar */
+        .global-search-banner {
+            background-color: #e9ecef;
+            border-bottom: 1px solid var(--border);
+            padding: 0.5rem 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            height: 60px;
+        }
+
+        .global-search-label {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .global-search-input-box {
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .global-search-input-box input {
+            width: 100%;
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border: 2px solid #ced4da;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .global-search-input-box input:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(165, 24, 30, 0.15);
+        }
+
+        .global-search-icon {
+            position: absolute;
+            left: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        /* Layout Structure */
+        .sidebar {
+            width: 320px;
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 1.5rem;
+            position: fixed;
+            top: 170px; /* Shift down corresponding layout profiles context rules */
+            height: calc(100vh - 170px);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .main-content {
+            margin-left: 320px;
+            flex-grow: 1;
+            padding: 2rem 3rem;
+        }
+
+        /* Sidebar Elements */
+        .brand {
+            margin-bottom: 1.5rem;
+        }
+        
+        .brand-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .programme-select {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            appearance: none;
+        }
+
+        .programme-select optgroup {
+            background-color: var(--primary);
+            color: #facc15;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        .programme-select option {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* External Assessment Portal Navigation Button */
+        .sidebar-link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.06);
+            color: white;
+            border: 1px dashed rgba(255, 255, 255, 0.25);
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-link-btn:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+            border-color: #facc15;
+            color: #facc15;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .nav-item {
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-item.active {
+            border-left: 4px solid var(--secondary);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Programme Specifications Overview Panel Block Style */
+        .programme-spec-panel {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--secondary);
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.75rem 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .spec-grid a {
+            word-break: break-all;
+        }
+
+        .spec-item {
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
+
+        .spec-item strong {
+            color: #1C1C1C;
+        }
+
+        /* Top Controls / Filters */
+        .controls-panel {
+            background: var(--card-bg);
+            padding: 1.25rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex-grow: 1;
+            min-width: 200px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.6rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.2rem;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .print-btn {
+            padding: 0.6rem 1.2rem;
+            border: 1px solid var(--secondary);
+            background: var(--secondary);
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .print-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Tracker Widget */
+        .tracker-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            border-top: 4px solid var(--secondary);
+            margin-top: auto;
+            color: var(--text-main);
+        }
+
+        .tracker-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--success);
+            transition: width 0.3s;
+        }
+
+        /* Module Grid layout */
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .module-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .module-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .module-code {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--secondary);
+            background: rgba(165, 24, 30, 0.08); 
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .module-credits {
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: #e2e8f0;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .module-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .module-meta {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .badge {
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .badge-compulsory { background: #e6fffa; color: #1d4ed8; border: 1px solid #bfdbfe; }
+        .badge-optional { background: #fffbeb; color: #b45309; border: 1px solid #fef3c7; }
+        .badge-term { background: #f3f4f6; color: #374151; }
+        .badge-global-context { background: #e2e8f0; color: #475569; border: 1px solid #cbd5e1; font-size: 0.75rem; margin-top: 0.4rem; display: inline-block; }
+
+        .module-desc {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .card-subtext {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+            line-height: 1.4;
+        }
+
+        .card-actions {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .select-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            width: 100%;
+            transition: all 0.2s;
+        }
+
+        .module-card.selected .select-btn {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        .module-card.selected {
+            border-color: var(--success);
+            box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.15);
+        }
+
+        .jump-route-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .jump-route-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Section Dividers */
+        .section-divider {
+            grid-column: 1 / -1;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-divider hr {
+            border: 0;
+            border-top: 2px solid var(--border);
+            margin-bottom: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .section-divider h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Detail Modal Popup & Disclaimer Layout overlay styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            z-index: 3000; 
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-container {
+            background: white;
+            border-radius: 8px;
+            max-width: 650px;
+            width: 100%;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transform: translateY(-20px);
+            transition: transform 0.2s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        /* Disclaimer Specific Popup UI Formatting block style */
+        .disclaimer-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1.5rem;
+            transition: opacity 0.2s;
+        }
+
+        .disclaimer-btn:hover {
+            opacity: 0.9;
+        }
+
+        .error-state {
+            grid-column: 1/-1;
+            padding: 4rem 2rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px dashed var(--secondary);
+            color: var(--secondary);
+            text-align: center;
+        }
+
+        #print-output-element {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body { padding-top: 250px; flex-direction: column; }
+            .global-search-banner { flex-direction: column; height: auto; padding: 1rem 1.5rem; gap: 0.5rem; }
+            .top-header-main, .top-header-sub { padding: 0 1.5rem; }
+            .sidebar { width: 100%; height: auto; position: relative; top: 0; padding: 1.5rem; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .tracker-card { margin-top: 2rem; }
+        }
+
+        /* Printable layout styles */
+        @media print {
+            body {
+                padding-top: 0 !important;
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                font-size: 11pt !important;
+                display: block !important;
+            }
+            .top-header, .sidebar, .controls-panel, #modules-container, .modal-overlay, main > header, .programme-spec-panel {
+                display: none !important;
+            }
+            .main-content {
+                margin-left: 0 !important;
+                padding: 0 !important;
+                width: 100% !important;
+            }
+            #print-output-element {
+                display: block !important;
+                padding: 10mm;
+            }
+            .print-header {
+                border-bottom: 3px solid #A5181E;
+                padding-bottom: 12px;
+                margin-bottom: 20px;
+            }
+            .print-title {
+                font-size: 20pt;
+                font-weight: bold;
+                color: #1C1C1C;
+                margin-bottom: 4px;
+            }
+            .print-subtitle {
+                font-size: 13pt;
+                color: #444444;
+                font-weight: 600;
+            }
+            .print-meta {
+                margin-top: 6px;
+                font-size: 9.5pt;
+                color: #666666;
+                font-style: italic;
+            }
+            .print-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 15px;
+            }
+            .print-table th {
+                background-color: #f5f5f5 !important;
+                border-bottom: 2px solid #1C1C1C;
+                font-weight: bold;
+                text-align: left;
+                padding: 8px;
+                font-size: 10pt;
+            }
+            .print-table td {
+                border-bottom: 1px solid #dddddd;
+                padding: 9px 8px;
+                font-size: 10pt;
+                vertical-align: top;
+                line-height: 1.4;
+            }
+            .print-footer {
+                margin-top: 30px;
+                border-top: 2px solid #1C1C1C;
+                padding-top: 12px;
+                text-align: right;
+                font-size: 12pt;
+                font-weight: bold;
+                padding-bottom: 20px;
+            }
+            .print-disclaimer {
+                margin-top: 40px;
+                padding: 15px;
+                border: 1px solid #000;
+                font-size: 9pt;
+                line-height: 1.3;
+                background-color: #f9f9f9;
+            }
+            .print-badge {
+                font-size: 8pt;
+                font-weight: bold;
+                text-transform: uppercase;
+                color: #555555;
+                display: block;
+                margin-top: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="top-header-main">
+            <img src="leeds-logo.png" alt="University of Leeds Logo" class="top-header-logo" onerror="this.style.display='none'">
+        </div>
+        <div class="top-header-sub" id="school-name-banner">
+            School of Chemical and Process Engineering
+        </div>
+        <!-- Branded Global Cross-Programme Search System -->
+        <div class="global-search-banner">
+            <div class="global-search-label">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                Global Search (All Degrees):
+            </div>
+            <div class="global-search-input-box">
+                <input type="text" id="global-cross-search" placeholder="Type a module code, name, staff member, keyword, or assessment criteria (e.g. 'Exam', 'Dissertation') across all paths..." oninput="executeGlobalCrossSearch()">
+                <span class="global-search-icon">🔍</span>
+            </div>
+        </div>
+    </header>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-title">Programme Catalogue</div>
+            <label for="programme-selector" style="display: block; font-size: 0.8rem; color: #facc15; margin-bottom: 0.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Select a programme:</label>
+            <select class="programme-select" id="programme-selector" onchange="switchProgramme()">
+                <option value="">Loading Programmes...</option>
+            </select>
+        </div>
+
+        <a href="#" target="_blank" rel="noopener" class="sidebar-link-btn" id="external-link-btn" style="display:none;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            <span id="external-link-label">View Assessment Details</span>
+        </a>
+        
+        <ul class="nav-menu" id="level-nav">
+        </ul>
+
+        <div class="tracker-card">
+            <div class="tracker-title">Credits Selected</div>
+            <div id="credit-status-text" style="font-weight: bold; font-size: 1.1rem;">0 Credits</div>
+            <div class="progress-bar"><div class="progress-fill" id="tracker-fill"></div></div>
+            <p id="tracker-message" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Select your modules.</p>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header style="margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: flex-start;">
+            <h2 id="level-title" style="font-size: 1.8rem; margin-bottom: 0.25rem;">Loading...</h2>
+            <!-- Right-aligned Program Title -->
+            <div id="programme-display-title" style="font-size: 1rem; font-weight: 600; color: var(--text-muted); text-align: right; max-width: 50%;"></div>
+        </header>
+
+        <section class="programme-spec-panel" id="spec-meta-panel" style="display:none;">
+            <div style="font-size:0.8rem; font-weight:700; color:var(--secondary); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:0.25rem;">Programme Specifications</div>
+            <div class="spec-grid" id="spec-meta-grid"></div>
+        </section>
+
+        <section class="controls-panel" id="controls-panel">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search current year modules..." oninput="filterModules()">
+            </div>
+            <button class="filter-btn active" data-filter="Full Year" onclick="setTermFilter('Full Year', this)">Full Year</button>
+            <button class="filter-btn" data-filter="Semester 1" onclick="setTermFilter('Semester 1', this)">Semester 1</button>
+            <button class="filter-btn" data-filter="Semester 2" onclick="setTermFilter('Semester 2', this)">Semester 2</button>
+            <button class="print-btn" onclick="executeDocumentPrint()">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                Print to PDF
+            </button>
+        </section>
+
+        <section class="module-grid" id="modules-container">
+        </section>
+
+        <section id="print-output-element">
+        </section>
+    </main>
+
+    <!-- Interactive Module Detail View Modal Section Popup -->
+    <div class="modal-overlay" id="modal" onclick="closeModal(event)">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="toggleModal(false)">&times;</button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Mandatory Informational Enrollment Site Disclaimer Modal Layout -->
+    <div class="modal-overlay" id="disclaimer-modal">
+        <div class="modal-container" style="max-width: 500px; text-align: center;">
+            <div style="color: var(--secondary); margin-bottom: 1rem;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            </div>
+            <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: var(--primary);">Important Enrolment Notice</h3>
+            <p style="color: #4a5568; line-height: 1.5; margin-bottom: 1rem; text-align: left;">
+                Please be aware that IPH (Interactive Programme Handbook) <strong>is not an official module enrolment site</strong>.
+            </p>
+            <p style="color: #4a5568; line-height: 1.5; text-align: left;">
+                This platform is strictly intended as an interactive planning tool for students to check curriculum pathway programme structures, evaluate course options, and model their educational journeys. Module enrolment must be carried out through the official university portal.
+            </p>
+            <button class="disclaimer-btn" onclick="dismissDisclaimer()">I Understand & Proceed</button>
+        </div>
+    </div>
+
+    <script>
+        /* ==================================================================
+           IPH — School of Chemical and Process Engineering
+           Fully data-driven version.
+
+           EVERYTHING displayed by this page comes from data/programme_data.json.
+           You should never need to edit this file to change content:
+             - school name, sidebar link, staff titles  -> top-level JSON keys
+             - programme specs (code, leader, duration) -> programme "spec" object
+             - year labels / credit targets             -> per-level fields
+             - optional-module pathway rules            -> per-level "option_groups"
+           See README.md for the full schema.
+           ================================================================== */
+
+        // ---- Global state -------------------------------------------------
+        let SITE = {};               // top-level JSON (school name, staff titles, ...)
+        let STAFF_TITLES = {};       // { "Jane Smith": "Dr", ... } from JSON
+        let allProgrammes = [];
+        let currentProgrammeObj = null;
+        let currentLevelObj = null;
+        let currentTermFilter = 'Full Year';
+        let selections = {};
+        let globalSearchActive = false;
+
+        const DEFAULT_TARGET_CREDITS = 120;
+
+        // ---- Helpers ------------------------------------------------------
+        function getCleanName(name) {
+            return (name || '').replace(/(Dr\.?|Prof\.?|Professor|Mr\.?|Mrs\.?|Ms\.?|Miss)\s+/i, '').trim();
+        }
+        function formatStaffName(name) {
+            const clean = getCleanName(name || 'TBC');
+            const title = STAFF_TITLES[clean];
+            return title ? `${title} ${clean}` : clean;
+        }
+        function getTermString(semInt) {
+            if (semInt === 1) return 'Semester 1';
+            if (semInt === 2) return 'Semester 2';
+            return 'Full Year';
+        }
+        function levelLabel(lvl) {
+            return lvl.year_label || lvl.friendlyYearLabel || `Year ${lvl.level}`;
+        }
+        function levelTargetCredits(lvl) {
+            if (lvl && typeof lvl.target_credits === 'number') return lvl.target_credits;
+            if (lvl && typeof lvl.targetOverrideCredits === 'number') return lvl.targetOverrideCredits;
+            if (currentProgrammeObj && typeof currentProgrammeObj.default_target_credits === 'number')
+                return currentProgrammeObj.default_target_credits;
+            return DEFAULT_TARGET_CREDITS;
+        }
+
+        // ---- Option-group rule engine ------------------------------------
+        // A level may define:
+        //   "option_groups": [
+        //     { "id": "A", "name": "List A Optional Modules",
+        //       "description": "Select between 1 and 2 modules from this list.",
+        //       "codes": ["CAPE5XXXM", ...],
+        //       "min": 1, "max": 2,
+        //       "unlock": { "groups": ["A"], "min_total": 1 }   // optional
+        //     }, ...
+        //   ]
+        function getOptionGroups(lvl) {
+            return (lvl && Array.isArray(lvl.option_groups)) ? lvl.option_groups : [];
+        }
+        function groupOfModule(lvl, code) {
+            return getOptionGroups(lvl).find(g => (g.codes || []).includes(code)) || null;
+        }
+        function countSelectedInGroup(lvl, group, state) {
+            return (lvl.modules || []).filter(m =>
+                (group.codes || []).includes(m.module_code) && state[m.module_code]).length;
+        }
+        function countSelectedAcrossGroups(lvl, groupIds, state) {
+            const groups = getOptionGroups(lvl).filter(g => groupIds.includes(g.id));
+            let total = 0;
+            groups.forEach(g => { total += countSelectedInGroup(lvl, g, state); });
+            return total;
+        }
+        // Validate a hypothetical selection state. Returns an error message or null.
+        function validateSelectionState(lvl, state) {
+            for (const g of getOptionGroups(lvl)) {
+                const n = countSelectedInGroup(lvl, g, state);
+                if (typeof g.max === 'number' && n > g.max) {
+                    return `Selection Blocked: You can select a maximum of ${g.max} module${g.max === 1 ? '' : 's'} from ${g.name || ('List ' + g.id)}.`;
+                }
+                if (n > 0 && g.unlock && Array.isArray(g.unlock.groups)) {
+                    const unlocked = countSelectedAcrossGroups(lvl, g.unlock.groups, state) >= (g.unlock.min_total || 1);
+                    if (!unlocked) {
+                        const names = g.unlock.groups.join(', ');
+                        return `Selection Blocked: ${g.name || ('List ' + g.id)} requires at least ${g.unlock.min_total || 1} selection(s) across list(s) ${names} first.`;
+                    }
+                }
+            }
+            return null;
+        }
+        // Unmet "min" rules (soft warnings shown in tracker, hard block on print)
+        function unmetMinimumRules(lvl, state) {
+            const issues = [];
+            for (const g of getOptionGroups(lvl)) {
+                if (typeof g.min === 'number') {
+                    const n = countSelectedInGroup(lvl, g, state);
+                    if (n < g.min) {
+                        issues.push(`You must select at least ${g.min} module${g.min === 1 ? '' : 's'} from ${g.name || ('List ' + g.id)}.`);
+                    }
+                }
+            }
+            return issues;
+        }
+
+        // ---- Disclaimer modal ---------------------------------------------
+        function triggerDisclaimerPopUp() { document.getElementById('disclaimer-modal').classList.add('active'); }
+        function dismissDisclaimer() { document.getElementById('disclaimer-modal').classList.remove('active'); }
+
+        // ---- Data loading --------------------------------------------------
+        async function loadData() {
+            try {
+                const response = await fetch('data/programme_data.json?v=' + new Date().getTime());
+                if (!response.ok) throw new Error('File not found');
+                const data = await response.json();
+
+                SITE = data;
+                STAFF_TITLES = data.staff_titles || {};
+                allProgrammes = data.programmes || [];
+
+                applySiteBranding();
+                populateProgrammeDropdown();
+                triggerDisclaimerPopUp();
+            } catch (error) {
+                document.getElementById('modules-container').innerHTML = `
+                    <div class="error-state">
+                        <h3>Unable to load programme_data.json</h3>
+                        <p>If you are testing this locally on your computer, your browser's security settings (CORS) are blocking the file.</p>
+                        <p><strong>Solution:</strong> You must host these files on a web server (like Netlify or GitHub Pages) for the JSON reading function to work, or run a local server, e.g. <code>python -m http.server</code> in this folder.</p>
+                    </div>`;
+            }
+        }
+
+        function applySiteBranding() {
+            if (SITE.school_display_name) {
+                document.getElementById('school-name-banner').innerText = SITE.school_display_name;
+                document.title = `IPH — ${SITE.school_display_name}`;
+            }
+            const linkBtn = document.getElementById('external-link-btn');
+            if (SITE.external_link && SITE.external_link.url) {
+                linkBtn.href = SITE.external_link.url;
+                document.getElementById('external-link-label').innerText = SITE.external_link.label || 'External Link';
+                linkBtn.style.display = '';
+            } else {
+                linkBtn.style.display = 'none';
+            }
+        }
+
+        function scheduleMidnightRefresh() {
+            const now = new Date();
+            const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
+            setTimeout(() => { window.location.reload(true); }, midnight.getTime() - now.getTime());
+        }
+
+        // ---- Programme dropdown (grouped by "category" field) --------------
+        function populateProgrammeDropdown() {
+            const selector = document.getElementById('programme-selector');
+            selector.innerHTML = '';
+
+            // Preserve order of first appearance of each category
+            const order = [];
+            const groups = {};
+            allProgrammes.forEach(prog => {
+                const cat = prog.category || 'Programmes';
+                if (!groups[cat]) { groups[cat] = []; order.push(cat); }
+                groups[cat].push(prog);
+            });
+
+            order.forEach(cat => {
+                const optgroup = document.createElement('optgroup');
+                optgroup.label = cat;
+                groups[cat].forEach(prog => {
+                    const option = document.createElement('option');
+                    option.value = prog.prog_id;
+                    option.textContent = prog.programme_title;
+                    optgroup.appendChild(option);
+                });
+                selector.appendChild(optgroup);
+            });
+
+            if (allProgrammes.length > 0) switchProgramme();
+        }
+
+        function switchProgramme() {
+            const progId = document.getElementById('programme-selector').value;
+            currentProgrammeObj = allProgrammes.find(p => p.prog_id == progId);
+
+            const specPanel = document.getElementById('spec-meta-panel');
+            const specGrid = document.getElementById('spec-meta-grid');
+
+            document.getElementById('programme-display-title').innerText =
+                currentProgrammeObj ? currentProgrammeObj.programme_title : '';
+
+            const spec = currentProgrammeObj ? currentProgrammeObj.spec : null;
+            if (spec) {
+                const managerDisplay = formatStaffName(spec.manager);
+                specGrid.innerHTML = `
+                    <div class="spec-item"><strong>Prog Code:</strong> ${spec.code || 'N/A'}</div>
+                    <div class="spec-item"><strong>UCAS Code:</strong> ${spec.ucas || 'N/A'}</div>
+                    <div class="spec-item"><strong>Duration:</strong> ${spec.duration || 'N/A'}</div>
+                    <div class="spec-item"><strong>Attendance:</strong> ${spec.attendance || 'Full Time'}</div>
+                    <div class="spec-item"><strong>Total Load:</strong> ${spec.total_credits || 'N/A'} Credits</div>
+                    <div class="spec-item"><strong>Programme Leader:</strong> ${managerDisplay}</div>
+                    ${spec.email ? `<div class="spec-item" style="grid-column: 1 / -1;"><strong>Contact:</strong> <a href="mailto:${spec.email}" style="color:var(--secondary); text-decoration:none; font-weight:600;">${spec.email}</a></div>` : ''}
+                `;
+                specPanel.style.display = 'block';
+            } else {
+                specPanel.style.display = 'none';
+            }
+
+            const navContainer = document.getElementById('level-nav');
+            navContainer.innerHTML = '';
+
+            if (currentProgrammeObj && currentProgrammeObj.levels) {
+                currentProgrammeObj.levels.forEach((lvl) => {
+                    const li = document.createElement('li');
+                    li.className = 'nav-item';
+                    li.id = `nav-level-${lvl.level}`;
+
+                    let initialCredits = 0;
+                    if (lvl.modules) lvl.modules.forEach(m => { if (m.compulsory) initialCredits += m.credits; });
+
+                    li.innerHTML = `${levelLabel(lvl)} <span id="ind-level-${lvl.level}">${initialCredits} cr</span>`;
+                    li.onclick = () => {
+                        document.getElementById('global-cross-search').value = '';
+                        globalSearchActive = false;
+                        document.getElementById('controls-panel').style.display = 'flex';
+                        switchLevel(lvl.level);
+                    };
+                    navContainer.appendChild(li);
+                });
+                if (currentProgrammeObj.levels.length > 0) switchLevel(currentProgrammeObj.levels[0].level);
+            }
+        }
+
+        function switchLevel(levelNum) {
+            currentLevelObj = currentProgrammeObj.levels.find(l => l.level === levelNum);
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.getElementById(`nav-level-${levelNum}`).classList.add('active');
+
+            document.getElementById('level-title').innerText = levelLabel(currentLevelObj);
+
+            selections = {};
+            if (currentLevelObj && currentLevelObj.modules) {
+                currentLevelObj.modules.forEach(mod => { if (mod.compulsory) selections[mod.module_code] = true; });
+            }
+            render();
+        }
+
+        function setTermFilter(term, buttonEl) {
+            currentTermFilter = term;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            buttonEl.classList.add('active');
+            render();
+        }
+
+        function filterModules() { render(); }
+
+        // ---- Global cross-programme search ---------------------------------
+        function executeGlobalCrossSearch() {
+            const query = document.getElementById('global-cross-search').value.toLowerCase().trim();
+            const container = document.getElementById('modules-container');
+
+            if (query === '') {
+                globalSearchActive = false;
+                document.getElementById('controls-panel').style.display = 'flex';
+                if (currentLevelObj) document.getElementById('level-title').innerText = levelLabel(currentLevelObj);
+                switchProgramme();
+                render();
+                return;
+            }
+
+            globalSearchActive = true;
+            document.getElementById('controls-panel').style.display = 'none';
+            document.getElementById('level-title').innerText = 'Global Search Results';
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.getElementById('spec-meta-panel').style.display = 'none';
+            document.getElementById('programme-display-title').innerText = '';
+
+            let resultsHTML = '';
+            let matchedCount = 0;
+
+            allProgrammes.forEach(prog => {
+                if (!prog.levels) return;
+                prog.levels.forEach(lvl => {
+                    if (!lvl.modules) return;
+                    lvl.modules.forEach(mod => {
+                        const code = (mod.module_code || '').toLowerCase();
+                        const title = (mod.module_title || '').toLowerCase();
+                        const desc = (mod.module_description || '').toLowerCase();
+                        const leaderDisplay = formatStaffName(mod.module_leader);
+                        const leaderSearchStr = leaderDisplay.toLowerCase();
+
+                        let assessmentMatch = false;
+                        if (mod.assessments) {
+                            mod.assessments.forEach(ass => {
+                                if ((ass.description || '').toLowerCase().includes(query) ||
+                                    (ass.short_description || '').toLowerCase().includes(query)) assessmentMatch = true;
+                            });
+                        }
+
+                        if (code.includes(query) || title.includes(query) || desc.includes(query) || leaderSearchStr.includes(query) || assessmentMatch) {
+                            matchedCount++;
+                            const termString = getTermString(mod.semester);
+                            let assessmentSummary = 'No assessment info tracked.';
+                            if (mod.assessments && mod.assessments.length > 0) {
+                                assessmentSummary = mod.assessments.map(a => a.short_description || a.description).join(', ');
+                            }
+
+                            resultsHTML += `
+                                <div class="module-card" onclick="openGlobalModuleContextModal('${prog.prog_id}', ${lvl.level}, '${mod.module_code}')">
+                                    <div class="module-header">
+                                        <span class="module-code">${mod.module_code}</span>
+                                        <span class="module-credits">${mod.credits} Credits</span>
+                                    </div>
+                                    <h3 class="module-title">${mod.module_title}</h3>
+                                    <div class="module-meta">
+                                        <span class="badge ${mod.compulsory ? 'badge-compulsory' : 'badge-optional'}">${mod.compulsory ? 'Compulsory' : 'Optional'}</span>
+                                        <span class="badge badge-term">${termString}</span>
+                                    </div>
+                                    <div class="badge badge-global-context">
+                                        📍 ${prog.programme_short_title || prog.programme_title} — ${levelLabel(lvl)}
+                                    </div>
+                                    <p class="module-desc" style="font-size: 0.85rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-top: 0.5rem;"><strong>Description:</strong> ${desc || 'No description available.'}</p>
+                                    <p class="card-subtext"><strong>Leader:</strong> ${leaderDisplay}</p>
+                                    <p class="card-subtext" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;"><strong>Assessment:</strong> ${assessmentSummary}</p>
+                                    <button class="jump-route-btn" onclick="jumpToTargetProgrammeRoute(event, '${prog.prog_id}', ${lvl.level})">Jump to Programme Layout →</button>
+                                </div>
+                            `;
+                        }
+                    });
+                });
+            });
+
+            container.innerHTML = matchedCount === 0
+                ? `<div style="grid-column: 1/-1; padding: 3rem; text-align: center; color: var(--text-muted);">No records found matching "${query}".</div>`
+                : resultsHTML;
+        }
+
+        function jumpToTargetProgrammeRoute(event, progId, levelNum) {
+            event.stopPropagation();
+            document.getElementById('programme-selector').value = progId;
+            document.getElementById('global-cross-search').value = '';
+            globalSearchActive = false;
+            document.getElementById('controls-panel').style.display = 'flex';
+            switchProgramme();
+            switchLevel(levelNum);
+            window.scrollTo({ top: 120, behavior: 'smooth' });
+        }
+
+        // ---- Modals ---------------------------------------------------------
+        function buildModuleModalContent(mod, contextLine) {
+            const termString = getTermString(mod.semester);
+            const descHtml = mod.module_description && mod.module_description.trim() !== '' ? mod.module_description : 'No description available.';
+
+            let assessmentsHtml = '';
+            if (mod.assessments && mod.assessments.length > 0) {
+                assessmentsHtml = '<ul style="margin-left: 1.5rem; margin-top: 0.5rem; line-height: 1.6; color: #4a5568;">';
+                mod.assessments.forEach(ass => {
+                    const weight = ass.percent_of_module ? Math.round(ass.percent_of_module * 100) + '%' : 'Formative';
+                    const date = ass.submission_date ? ass.submission_date : 'TBC';
+                    assessmentsHtml += `<li><strong>${ass.description}</strong> (${weight}) - Due: ${date}</li>`;
+                });
+                assessmentsHtml += '</ul>';
+            } else {
+                assessmentsHtml = '<p style="margin-top: 0.25rem; color: #718096; font-style: italic;">No assessment information available.</p>';
+            }
+
+            const notesHtml = mod.notes ? `<p style="margin-top:1rem; font-size:0.9rem; color:var(--secondary);"><strong>Notes:</strong> ${mod.notes}</p>` : '';
+
+            return `
+                ${contextLine || ''}
+                <span class="module-code">${mod.module_code}</span>
+                <h3 style="margin: 1rem 0 0.5rem 0; font-size: 1.5rem;">${mod.module_title}</h3>
+                <div style="margin-bottom: 1.25rem;">
+                    <span class="badge ${mod.compulsory ? 'badge-compulsory' : 'badge-optional'}">${mod.compulsory ? 'Compulsory' : 'Optional'}</span>
+                    <span class="badge badge-term">${termString}</span>
+                    <span class="badge" style="background:#e2e8f0;">${mod.credits} Credits</span>
+                </div>
+                <hr style="border:0; border-top:1px solid var(--border); margin-bottom:1rem;">
+                <p style="color:#4a5568; margin-bottom: 0.75rem;"><strong>Module Leader:</strong> ${formatStaffName(mod.module_leader)}</p>
+                <div style="margin-bottom: 1rem; color: #2d3748; line-height: 1.5;"><strong>Description:</strong> <p style="margin-top:0.25rem; color:#4a5568;">${descHtml}</p></div>
+                <div style="margin-bottom: 1rem; color: #2d3748;"><strong>Assessment Breakdown:</strong> ${assessmentsHtml}</div>
+                ${notesHtml}
+            `;
+        }
+
+        function openGlobalModuleContextModal(progId, levelNum, moduleCode) {
+            const targetProg = allProgrammes.find(p => p.prog_id == progId);
+            const targetLvl = targetProg.levels.find(l => l.level === levelNum);
+            const mod = targetLvl.modules.find(m => m.module_code === moduleCode);
+            const contextLine = `
+                <div style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:0.5rem;">
+                    Context: ${targetProg.programme_title} (${levelLabel(targetLvl)})
+                </div>`;
+            document.getElementById('modal-content').innerHTML = buildModuleModalContent(mod, contextLine);
+            toggleModal(true);
+        }
+
+        function showDetails(id) {
+            if (globalSearchActive) return;
+            const mod = currentLevelObj.modules.find(m => m.module_code === id);
+            document.getElementById('modal-content').innerHTML = buildModuleModalContent(mod, '');
+            toggleModal(true);
+        }
+
+        function toggleModal(open) { document.getElementById('modal').classList.toggle('active', open); }
+        function closeModal(e) { if (e.target.id === 'modal') toggleModal(false); }
+
+        // ---- Selection logic -------------------------------------------------
+        function toggleModuleSelection(id, event) {
+            event.stopPropagation();
+            const mod = currentLevelObj.modules.find(m => m.module_code === id);
+            if (mod.compulsory) return;
+
+            const targetCredits = levelTargetCredits(currentLevelObj);
+            const currentTotal = currentLevelObj.modules
+                .filter(m => selections[m.module_code]).reduce((sum, m) => sum + m.credits, 0);
+
+            if (!selections[id] && currentTotal >= targetCredits) {
+                alert(`Selection Blocked: Maximum allowed credit limit of ${targetCredits} credits has already been achieved.`);
+                return;
+            }
+
+            // Validate the hypothetical new state against the option-group rules
+            const newState = Object.assign({}, selections);
+            newState[id] = !newState[id];
+            const error = validateSelectionState(currentLevelObj, newState);
+            if (error) { alert(error); return; }
+
+            selections[id] = !selections[id];
+            render();
+            updateTrackers();
+        }
+
+        function updateTrackers() {
+            if (!currentProgrammeObj || globalSearchActive) return;
+            currentProgrammeObj.levels.forEach(lvl => {
+                let lvlTotal = 0;
+                lvl.modules.forEach(m => { if (selections[m.module_code] && lvl.level === currentLevelObj.level) lvlTotal += m.credits; });
+                const ind = document.getElementById(`ind-level-${lvl.level}`);
+                if (ind && lvl.level === currentLevelObj.level) ind.innerText = `${lvlTotal} cr`;
+            });
+
+            let targetCredits = levelTargetCredits(currentLevelObj);
+            const currentTotal = currentLevelObj.modules
+                .filter(m => selections[m.module_code]).reduce((sum, m) => sum + m.credits, 0);
+            const compulsoryTotal = currentLevelObj.modules
+                .filter(m => m.compulsory).reduce((sum, m) => sum + m.credits, 0);
+            if (compulsoryTotal > targetCredits) targetCredits = compulsoryTotal;
+
+            const percentage = Math.min((currentTotal / targetCredits) * 100, 100);
+            document.getElementById('credit-status-text').innerText = `${currentTotal} / ${targetCredits} Credits`;
+            document.getElementById('tracker-fill').style.width = `${percentage}%`;
+
+            const msg = document.getElementById('tracker-message');
+            const fill = document.getElementById('tracker-fill');
+
+            const violations = unmetMinimumRules(currentLevelObj, selections);
+            if (violations.length > 0) {
+                fill.style.backgroundColor = 'var(--secondary)';
+                msg.innerText = '⚠️ Pathway Rule: ' + violations[0];
+                msg.style.color = 'var(--secondary)';
+                msg.style.fontWeight = '700';
+            } else if (currentTotal >= targetCredits) {
+                fill.style.backgroundColor = 'var(--success)';
+                msg.innerText = '⚠️ Maximum credit allowance achieved. Selection locked.';
+                msg.style.color = 'var(--success)';
+                msg.style.fontWeight = '700';
+            } else {
+                fill.style.backgroundColor = 'orange';
+                msg.innerText = `Requires ${targetCredits - currentTotal} more credits to complete curriculum.`;
+                msg.style.color = 'var(--warning)';
+                msg.style.fontWeight = 'normal';
+            }
+        }
+
+        // ---- Module cards -----------------------------------------------------
+        function createCardHTML(mod) {
+            const isSelected = selections[mod.module_code] ? 'selected' : '';
+            const btnText = mod.compulsory ? 'Compulsory Base' : (selections[mod.module_code] ? '✓ Selected' : '+ Add Option');
+            const btnDisabled = mod.compulsory ? 'disabled style="cursor:not-allowed; background:#d4edda; color:#155724; border-color:#c3e6cb;"' : '';
+            const termString = getTermString(mod.semester);
+
+            const descSnippet = mod.module_description && mod.module_description.trim() !== '' ? mod.module_description : 'No description available.';
+            let assessmentSummary = 'No assessment information available.';
+            if (mod.assessments && mod.assessments.length > 0) {
+                assessmentSummary = mod.assessments.map(a => a.short_description || a.description).join(', ');
+            }
+
+            return `
+                <div class="module-card ${isSelected}" onclick="showDetails('${mod.module_code}')">
+                    <div class="module-header">
+                        <span class="module-code">${mod.module_code}</span>
+                        <span class="module-credits">${mod.credits} Credits</span>
+                    </div>
+                    <h3 class="module-title">${mod.module_title}</h3>
+                    <div class="module-meta">
+                        <span class="badge ${mod.compulsory ? 'badge-compulsory' : 'badge-optional'}">${mod.compulsory ? 'Compulsory' : 'Optional'}</span>
+                        <span class="badge badge-term">${termString}</span>
+                    </div>
+                    <p class="module-desc" style="font-size: 0.85rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><strong>Description:</strong> ${descSnippet}</p>
+                    <p class="card-subtext"><strong>Leader:</strong> ${formatStaffName(mod.module_leader)}</p>
+                    <p class="card-subtext" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;"><strong>Assessment:</strong> ${assessmentSummary}</p>
+                    <div class="card-actions">
+                        <button class="select-btn" ${btnDisabled} onclick="toggleModuleSelection('${mod.module_code}', event)">${btnText}</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ---- Print / PDF --------------------------------------------------------
+        function executeDocumentPrint() {
+            const container = document.getElementById('print-output-element');
+            if (!currentProgrammeObj || !currentLevelObj) return;
+
+            const violations = unmetMinimumRules(currentLevelObj, selections);
+            if (violations.length > 0) {
+                alert('Submission Blocked: ' + violations[0]);
+                return;
+            }
+
+            const lvlLabel = levelLabel(currentLevelObj);
+            const chosenModules = currentLevelObj.modules.filter(m => selections[m.module_code]);
+            const netCredits = chosenModules.reduce((sum, m) => sum + m.credits, 0);
+            const todayStr = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+            const schoolName = SITE.school_display_name || 'School of Chemical and Process Engineering';
+
+            let rowsHtml = '';
+            if (chosenModules.length === 0) {
+                rowsHtml = `<tr><td colspan="6" style="text-align: center; padding: 15px;">No modules currently selected.</td></tr>`;
+            } else {
+                rowsHtml = chosenModules.map(m => {
+                    let assessPrint = 'No assessment info available.';
+                    if (m.assessments && m.assessments.length > 0) {
+                        assessPrint = m.assessments.map(a => `${a.description} (${a.percent_of_module ? Math.round(a.percent_of_module * 100) + '%' : 'Formative'})`).join('<br>');
+                    }
+
+                    let groupContext = m.compulsory ? 'Compulsory' : 'Optional';
+                    const grp = groupOfModule(currentLevelObj, m.module_code);
+                    if (grp) groupContext = (grp.name || ('List ' + grp.id)) + ' Option';
+
+                    return `
+                        <tr>
+                            <td style="font-weight: bold; white-space: nowrap;">
+                                ${m.module_code}
+                                <span class="print-badge">${groupContext}</span>
+                            </td>
+                            <td style="font-weight: 500;">${m.module_title}</td>
+                            <td style="text-align: center;">${m.credits}</td>
+                            <td>${getTermString(m.semester)}</td>
+                            <td>${formatStaffName(m.module_leader)}</td>
+                            <td style="font-size: 9pt; line-height:1.3;">
+                                ${assessPrint}
+                                ${m.notes ? `<div style="margin-top: 4px; color: #444; font-style: italic;"><strong>Note:</strong> ${m.notes}</div>` : ''}
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+
+            container.innerHTML = `
+                <div class="print-header">
+                    <div class="print-title">${currentProgrammeObj.programme_title}</div>
+                    <div class="print-subtitle">Enrolment Selection Record — ${lvlLabel}</div>
+                    <div class="print-meta">Generated on ${todayStr} | ${schoolName} | University of Leeds</div>
+                </div>
+
+                <table class="print-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 12%;">Code</th>
+                            <th style="width: 28%;">Module Title</th>
+                            <th style="width: 8%; text-align: center;">Credits</th>
+                            <th style="width: 12%;">Term</th>
+                            <th style="width: 15%;">Module Leader</th>
+                            <th style="width: 25%;">Assessment Tasks Weighting</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${rowsHtml}
+                    </tbody>
+                </table>
+
+                <div class="print-footer">
+                    Total Selection Weight: ${netCredits} Credits
+                </div>
+
+                <div class="print-disclaimer">
+                    <strong>Important Enrolment Notice</strong><br>
+                    Please be aware that IPH (Interactive Programme Handbook) is not an official module enrolment site.<br>
+                    This platform is strictly intended as an interactive planning tool for students to check curriculum pathway programme structures, evaluate course options, and model their educational journeys. Module enrolment must be carried out through the official university portal.
+                </div>
+            `;
+
+            window.print();
+        }
+
+        // ---- Main render -----------------------------------------------------
+        function render() {
+            if (globalSearchActive) return;
+            const container = document.getElementById('modules-container');
+            const searchVal = document.getElementById('search-input').value.toLowerCase();
+            if (!currentLevelObj || !currentLevelObj.modules) return;
+
+            const filtered = currentLevelObj.modules.filter(mod => {
+                const termString = getTermString(mod.semester);
+                if (currentTermFilter === 'Semester 1' && termString !== 'Semester 1' && termString !== 'Full Year') return false;
+                if (currentTermFilter === 'Semester 2' && termString !== 'Semester 2' && termString !== 'Full Year') return false;
+                return mod.module_title.toLowerCase().includes(searchVal) || mod.module_code.toLowerCase().includes(searchVal);
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div style="grid-column: 1/-1; padding: 3rem; text-align: center; color: var(--text-muted);">No modules found matching current configurations.</div>`;
+                updateTrackers(); return;
+            }
+
+            let html = '';
+            const groups = getOptionGroups(currentLevelObj);
+
+            const comps = filtered.filter(m => m.compulsory);
+            if (comps.length > 0) {
+                html += `<div class="section-divider"><h3>Compulsory Modules</h3></div>` + comps.map(m => createCardHTML(m)).join('');
+            }
+
+            const claimed = new Set();
+            groups.forEach(g => {
+                const groupMods = filtered.filter(m => !m.compulsory && (g.codes || []).includes(m.module_code));
+                groupMods.forEach(m => claimed.add(m.module_code));
+                if (groupMods.length > 0) {
+                    const desc = g.description ? `<p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem; margin-top:-0.25rem;">${g.description}</p>` : '';
+                    html += `<div class="section-divider"><hr><h3>${g.name || ('List ' + g.id + ' Optional Modules')}</h3>${desc}</div>` + groupMods.map(m => createCardHTML(m)).join('');
+                }
+            });
+
+            const opts = filtered.filter(m => !m.compulsory && !claimed.has(m.module_code));
+            if (opts.length > 0) {
+                html += `<div class="section-divider"><hr><h3>Optional Modules</h3></div>` + opts.map(m => createCardHTML(m)).join('');
+            } else if (comps.length === 0 && groups.length === 0) {
+                html += `
+                    <div class="section-divider">
+                        <hr>
+                        <p style="padding: 1.5rem 0; text-align: center; font-style: italic; color: var(--text-muted); font-size: 0.95rem;">
+                            No modules configured for this academic block.
+                        </p>
+                    </div>`;
+            }
+
+            container.innerHTML = html;
+            updateTrackers();
+        }
+
+        window.onload = () => { loadData(); scheduleMidnightRefresh(); };
+    </script>
+</body>
+</html>
